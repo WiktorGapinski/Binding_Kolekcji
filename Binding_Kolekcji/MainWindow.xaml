@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Product List" Height="450" Width="800">
     <Grid>
-        <ListView x:Name="lstProdukty">
+        <ListView x:Name="1stProdukty">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Symbol" DisplayMemberBinding="{Binding Symbol}" />

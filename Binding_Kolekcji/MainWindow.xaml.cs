@@ -1,33 +1,32 @@
-﻿using System.Text;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Binding_Kolekcji
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public class Produkt
+    public partial class MainWindow : Window
     {
-        public string Symbol { get; set; }
-        public string Nazwa { get; set; }
-        public int LiczbaSztuk { get; set; }
-        public string Magazyn { get; set; }
+        // Deklarujemy ObservableCollection dla produktów
+        private ObservableCollection<Produkt> ListaProduktow;
 
-        public Produkt(string symbol, string nazwa, int liczbaSztuk, string magazyn)
+        public MainWindow()
         {
-            Symbol = symbol;
-            Nazwa = nazwa;
-            LiczbaSztuk = liczbaSztuk;
-            Magazyn = magazyn;
+            InitializeComponent();
+            PrzygotujWiazanie();
+        }
+
+        private void PrzygotujWiazanie()
+        {
+            // Inicjalizacja ObservableCollection z danymi
+            ListaProduktow = new ObservableCollection<Produkt>
+            {
+                new Produkt("01-11", "ołówek", 8, "Katowice 1"),
+                new Produkt("PW-20", "pióro wieczne", 75, "Katowice 2"),
+                new Produkt("DZ-10", "długopis żelowy", 1121, "Katowice 1"),
+                new Produkt("DZ-12", "długopis kulkowy", 280, "Katowice 2")
+            };
+
+            // Ustawienie wiązania z ListView
+            1stProdukty.ItemsSource = ListaProduktow;
         }
     }
-
 }
